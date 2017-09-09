@@ -8,14 +8,14 @@ import java.util.List;
 
 public class UsrDaoUtils implements UsrDAO {
 
-    static SessionFactory sessionFactory = null;
+    private static SessionFactory sessionFactory = null;
 
     static {
         try {
             Configuration configuration = new Configuration();
             configuration.configure("Info/Hibernate.cfg.xml");
             sessionFactory = configuration.buildSessionFactory();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
     }
@@ -43,6 +43,14 @@ public class UsrDaoUtils implements UsrDAO {
             return (User)object;
     }
 
+    public boolean containsUsr(String usrname){
+        if(usrname==null)return false;
+        else {
+            Session session=sessionFactory.openSession();
+            if(session.get(User.class,usrname)==null)return false;
+        }
+        return true;
+    }
     @Override
     public List<User> selUSRall() {
         Session session = sessionFactory.openSession();

@@ -16,8 +16,6 @@ public class LoginFunc {
 
     public boolean isAccessible(User usr) {
         String usrname = usr.getUsername();
-        if (usrmap.retrieveUSRbyName(usrname).getPassword().equals(usr.getPassword()))
-            return true;
-        else return false;
+        return usrmap.containsUsr(usrname) && usrmap.retrieveUSRbyName(usrname).getPassword().equals(usr.getPassword());
     }
 }

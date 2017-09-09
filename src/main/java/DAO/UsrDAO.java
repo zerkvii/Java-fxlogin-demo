@@ -3,9 +3,9 @@ package DAO;
 import java.util.List;
 
 public interface UsrDAO {
-    public void createUSR(User usr);
-    public void deleteUSR(User usr);
-    public void updateUSR(User usr);
-    public User retrieveUSRbyName(String usrname);
-    public List<User> selUSRall();
+    void createUSR(User usr);
+    void deleteUSR(User usr);
+    void updateUSR(User usr);
+     User retrieveUSRbyName(String usrname);
+    List selUSRall();
 }
